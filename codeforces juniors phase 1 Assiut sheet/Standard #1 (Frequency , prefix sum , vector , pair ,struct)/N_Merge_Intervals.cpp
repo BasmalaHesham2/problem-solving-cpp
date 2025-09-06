@@ -12,6 +12,30 @@ void myfun(){
 }
 int32_t main(){
     myfun();
-   
+    int n;cin>>n;
+    vector<pii> v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i].first>>v[i].second;
+    }
+
+    sort(v.begin(),v.end());
+    vi range(0);
+    for(int i=0;i<n-1;i++){
+        if(v[i+1].first<=v[i].second){
+            v[i+1].first=v[i].first;
+            if(v[i].second>v[i+1].second){
+                v[i+1].second=v[i].second;
+            }
+        }
+        else{
+            range.push_back(i);
+        }
+    }
+
+
+    for(int x : range){
+        cout<<v[x].first<<" "<<v[x].second<<endl;
+    }
+    cout<<v[n-1].first<<" "<<v[n-1].second<<endl;
     return 0;
 }

@@ -1,1 +1,1 @@
-team.push_back(i);
+#define int long long 
